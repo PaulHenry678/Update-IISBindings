@@ -1,7 +1,19 @@
 ﻿
 
-Function Update-IISBindings($ComputerName,$oldIP,$newIP)
+Function Update-IISBindings
 {
+[CmdletBinding()]
+
+param(
+    [Parameter(Mandatory=$True)]
+    [string]$computerName,
+    [Parameter(Mandatory=$True)]
+    [string]$oldip,
+    [Parameter(Mandatory=$True)]
+    [string]$newip
+  )
+
+
     #IF(Get-WindowsFeature -ComputerName $computername -Name web-server | where {$_.installstate -like 'Installed'}){
     Invoke-Command -computername $computername -ScriptBlock {
     
